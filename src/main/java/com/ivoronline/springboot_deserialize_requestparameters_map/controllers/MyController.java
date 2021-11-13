@@ -1,19 +1,18 @@
 package com.ivoronline.springboot_deserialize_requestparameters_map.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
-@Controller
+@RestController
 public class MyController {
 
-  @ResponseBody
-  @RequestMapping("/AddPerson")
-  public String addPerson(@RequestParam Map<String, Object> requestParameters) {
+  //================================================================
+  // ADD PERSON
+  //================================================================
+  @RequestMapping("AddPerson")
+  String addPerson(@RequestParam Map<String, Object> requestParameters) {
 
     //ITERATE OVER MAP
     for (var entry : requestParameters.entrySet()) {
@@ -23,7 +22,7 @@ public class MyController {
     }
 
     //GET PARAMETERS
-    Object name   = requestParameters.get("firstName");
+    Object name   = requestParameters.get("FirstName");
     Object height = requestParameters.get("height");
     Object age    = requestParameters.get("age");
 
